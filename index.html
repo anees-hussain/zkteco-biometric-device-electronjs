@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Biometric Attendance</title>
+  </head>
+  <body>
+    <h1>Welcome to Biometric Attendance System</h1>
+
+    <div>
+      <label for="ipInput">Enter Device IP:</label>
+      <input
+        type="text"
+        id="ipInput"
+        placeholder="e.g. 192.168.10.99"
+        value="192.168.10.99"
+      />
+      <button id="fetchDataBtn">Fetch Data</button>
+    </div>
+
+    <div id="machineInfo"></div>
+    <div>
+      <p>Note: Fetch Data before downloading it.</p>
+      <button id="exportBtn">Download Attendance Data</button>
+    </div>
+    <script src="renderer.js"></script>
+  </body>
+</html>
