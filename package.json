@@ -8,11 +8,11 @@
     "package": "electron-packager . biometric-attendance-app --platform=win32 --arch=x64 --out=dist --overwrite"
   },
   "dependencies": {
-    "electron": "^25.0.0",
     "node-zklib": "^1.0.0",
     "xlsx": "^0.17.0"
   },
   "devDependencies": {
+    "electron": "^25.0.0",
     "electron-packager": "^15.0.0"
   }
 }
