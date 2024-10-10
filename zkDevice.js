@@ -77,6 +77,13 @@ const exportToExcel = async (users, logs, window) => {
       Name: user.name,
     }));
     const userSheet = XLSX.utils.json_to_sheet(userSheetData);
+
+    // Apply formatting for Date and Time columns
+    userSheet["!cols"] = [
+      { wch: 10 }, // Width for UserID column
+      { wch: 20 }, // Width for UserName column
+    ];
+
     XLSX.utils.book_append_sheet(workbook, userSheet, "Users");
 
     // Map user IDs to names for attendance logs
@@ -91,11 +98,20 @@ const exportToExcel = async (users, logs, window) => {
       return {
         UserID: log.deviceUserId,
         UserName: userIdToName[log.deviceUserId] || "Unknown",
-        Date: recordDate.toLocaleDateString(),
+        Date: recordDate,
         Time: recordDate.toLocaleTimeString(),
       };
     });
     const logSheet = XLSX.utils.json_to_sheet(logSheetData);
+
+    // Apply formatting for Date and Time columns
+    logSheet["!cols"] = [
+      { wch: 10 }, // Width for UserID column
+      { wch: 20 }, // Width for UserName column
+      { wch: 12, z: "yyyy-mm-dd" }, // Date format for Date column
+      { wch: 10, z: "h:mm:ss AM/PM" }, // Time format for Time column
+    ];
+
     XLSX.utils.book_append_sheet(workbook, logSheet, "Attendance Logs");
 
     // Write workbook to the selected file path
