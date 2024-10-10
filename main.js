@@ -1,5 +1,5 @@
 // main.js
-const { app, BrowserWindow, ipcMain } = require("electron");
+const { app, BrowserWindow, ipcMain, Menu } = require("electron");
 const path = require("path");
 const { getMachineData, exportToExcel } = require("./zkDevice");
 
@@ -15,6 +15,8 @@ function createWindow() {
       contextIsolation: false,
     },
   });
+
+  Menu.setApplicationMenu(null);
 
   mainWindow.loadFile("index.html");
 }
